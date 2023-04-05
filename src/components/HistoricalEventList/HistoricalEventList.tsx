@@ -5,11 +5,11 @@ import { FreeMode, Navigation } from 'swiper';
 import { facts } from '../../data/mock-data';
 import HistoricalEvent from '../HistoricalEvent/HistoricalEvent';
 import { SwiperButton } from '../UI/SwiperButton';
+import { SLIDES_PER_VIEW, SPACE_BETWEEN } from './config';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/free-mode';
 import styles from './HistoricalEventList.module.scss';
-import { SLIDES_PER_VIEW, SPACE_BETWEEN } from './config';
 
 export default function HistoricalEventList() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -33,16 +33,30 @@ export default function HistoricalEventList() {
     swiperRef.current = swiper;
   };
 
+  const breakpoints = {
+    320: {
+      slidesPerView: 1.5,
+      spaceBetween: 25,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 35,
+    },
+    1024: {
+      slidesPerView: SLIDES_PER_VIEW,
+      spaceBetween: SPACE_BETWEEN,
+    },
+  };
+
   return (
     <div className={styles.historicalEventList}>
       <div className={styles.historicalEventList__container}>
         <Swiper
-          slidesPerView={SLIDES_PER_VIEW}
-          spaceBetween={SPACE_BETWEEN}
           grabCursor
           freeMode
           initialSlide={activeIndex}
           onActiveIndexChange={handleChangeActiveIndex}
+          breakpoints={breakpoints}
           modules={[FreeMode, Navigation]}
           touchEventsTarget='container'
           onBeforeInit={handleBeforeInit}

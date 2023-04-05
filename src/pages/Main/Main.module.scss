@@ -1,6 +1,8 @@
 @import '../../app/styles/vars';
 
 .main {
+  padding-top: 170px;
+
   &__title {
     max-width: 353px;
     font-weight: 700;
@@ -12,5 +14,27 @@
     border-image: $gradient;
     border-image-slice: 1;
     padding-left: calc(80px - 5px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .main {
+    &__title {
+      font-size: 42px;
+      line-height: 50px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding-top: 59px;
+    &__title {
+      max-width: 123px;
+      font-size: 20px;
+      line-height: 24px;
+      border-left: none;
+      padding: 0;
+    }
   }
 }

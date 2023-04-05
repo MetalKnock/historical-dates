@@ -17,3 +17,17 @@
     transform: translateY(-50%);
   }
 }
+
+@media (max-width: 768px) {
+  .historicalEventList {
+    padding: 0;
+
+    &__container {
+      padding: 0;
+    }
+
+    &__nav {
+      display: none;
+    }
+  }
+}
