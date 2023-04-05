@@ -1,0 +1,17 @@
+$widthDesktop: 1920;
+$leftMargin: 320;
+$rightMargin: $leftMargin / 2;
+
+$black-blue: #42567a;
+$iris: #3877ee;
+$fuchsia: #ef5da8;
+$gradient: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
+$white: white;
+$borderColor: #42567a1a;
+
+@mixin transition {
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}

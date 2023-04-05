@@ -1,0 +1,28 @@
+@import './vars';
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  margin-left: calc($leftMargin / $widthDesktop * 100%);
+  margin-right: calc($rightMargin / $widthDesktop * 100%);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .container {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
