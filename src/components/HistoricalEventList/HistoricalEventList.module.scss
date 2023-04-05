@@ -1,0 +1,19 @@
+.historicalEventList {
+  user-select: none;
+  padding: 20px;
+
+  &__container {
+    position: relative;
+    padding: 0 60px;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+}

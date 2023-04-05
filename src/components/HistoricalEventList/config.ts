@@ -1,0 +1,5 @@
+const SLIDES_PER_VIEW = 3;
+
+const SPACE_BETWEEN = 80;
+
+export { SLIDES_PER_VIEW, SPACE_BETWEEN };
