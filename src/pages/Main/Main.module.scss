@@ -1,0 +1,16 @@
+@import '../../app/styles/vars';
+
+.main {
+  &__title {
+    max-width: 353px;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 67px;
+    color: $black-blue;
+    margin: 0;
+    border-left: 5px solid;
+    border-image: $gradient;
+    border-image-slice: 1;
+    padding-left: calc(80px - 5px);
+  }
+}
