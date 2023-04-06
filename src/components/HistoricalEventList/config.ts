@@ -1,5 +1,22 @@
-const SLIDES_PER_VIEW = 3;
+const BREAKPOINTS = {
+  320: {
+    slidesPerView: 1.5,
+    spaceBetween: 25,
+  },
+  640: {
+    slidesPerView: 2,
+    spaceBetween: 35,
+  },
+  1024: {
+    slidesPerView: 3,
+    spaceBetween: 80,
+  },
+};
 
-const SPACE_BETWEEN = 80;
+const enum PositionTypes {
+  beginning = 'beginning',
+  edge = 'edge',
+  end = 'end',
+}
 
-export { SLIDES_PER_VIEW, SPACE_BETWEEN };
+export { BREAKPOINTS, PositionTypes };
