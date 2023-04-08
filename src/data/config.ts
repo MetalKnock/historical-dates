@@ -6,4 +6,13 @@ interface Fact {
 
 type Facts = Fact[];
 
-export type { Fact, Facts };
+interface HistoricalDate {
+  id: number;
+  years: Array<number>;
+  category: string;
+  facts: Facts;
+}
+
+type HistoricalDates = HistoricalDate[];
+
+export type { Fact, Facts, HistoricalDate, HistoricalDates };
