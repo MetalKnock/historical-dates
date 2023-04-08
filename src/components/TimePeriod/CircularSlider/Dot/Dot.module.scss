@@ -15,8 +15,8 @@
   padding: 0;
 
   font-size: 0;
-  line-height: 30px;
   font-weight: 400;
+  line-height: 30px;
   color: $black-blue;
 
   background: $black-blue;
@@ -31,11 +31,13 @@
   }
 
   &__category {
-    font-weight: 700;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     left: calc(56px + 20px);
+    transform: translateY(-50%);
+
+    font-weight: 700;
+
     opacity: 0;
   }
 }
