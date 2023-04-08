@@ -1,0 +1,31 @@
+@import '../../../../app/styles/vars';
+
+.pagination {
+  padding-left: calc(80px - 5px);
+  color: $black-blue;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+
+  &__span {
+    // opacity: 0;
+  }
+
+  &__buttons {
+    margin: 20px 0 0 0;
+    display: flex;
+    gap: 20px;
+  }
+
+  &__button {
+    background-color: $background;
+
+    &_right {
+      transform: scaleX(-1);
+    }
+
+    &:hover:enabled {
+      background-color: $white;
+    }
+  }
+}

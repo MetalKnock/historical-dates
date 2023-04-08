@@ -1,0 +1,41 @@
+@import '../../../../app/styles/vars';
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 6px;
+  height: 6px;
+  margin: calc((-6px / 2));
+  padding: 0;
+
+  font-size: 0;
+  line-height: 30px;
+  font-weight: 400;
+  color: $black-blue;
+
+  background: $black-blue;
+  border: none;
+  border-radius: 50%;
+
+  @for $i from 1 through $circular-slider-dots {
+    &:nth-child(#{$i}) {
+      $angle: calc(360deg / $circular-slider-dots * $i);
+      transform: rotate($angle) translate(calc($circular-slider-width / 2)) rotate(-$angle);
+    }
+  }
+
+  &__category {
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(56px + 20px);
+    opacity: 0;
+  }
+}

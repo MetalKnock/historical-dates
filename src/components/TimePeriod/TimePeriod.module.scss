@@ -1,0 +1,40 @@
+@import '../../app/styles/vars';
+
+.timePeriod {
+  position: relative;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 100%;
+    height: 1px;
+
+    background-color: $black-blue-10;
+  }
+
+  &__numbers {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    gap: 90px;
+
+    padding-right: 30px;
+  }
+
+  &__number {
+    &_iris {
+      color: $iris;
+    }
+
+    &_fuchsia {
+      color: $fuchsia;
+    }
+  }
+}

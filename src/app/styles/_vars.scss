@@ -1,10 +1,11 @@
 $background: #f4f5f9;
 $black-blue: #42567a;
+$black-blue-10: #42567a1a;
+$black-blue-50: #42567a;
 $iris: #3877ee;
 $fuchsia: #ef5da8;
 $gradient: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
 $white: white;
-$border-color: #42567a1a;
 $dot-active: #303e5880;
 $sm: 320px;
 $md: 768px;
@@ -18,4 +19,10 @@ $circular-slider-width: 530px;
 
 @mixin transition {
   transition: all 0.2s ease-in-out 0s;
+}
+
+/* stylelint-disable */
+:export {
+  background: $background;
+  blackBlue: $black-blue;
 }

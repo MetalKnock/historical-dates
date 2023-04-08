@@ -1,0 +1,17 @@
+@import '../../../app/styles/vars';
+
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $black-blue-50;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}

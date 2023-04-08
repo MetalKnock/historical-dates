@@ -1,26 +1,27 @@
 @import '../../../app/styles/vars';
 
 .swiperButton {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+
+  opacity: 1;
   background-color: $white;
   border: none;
-  box-shadow: 0px 0px 15px 0px #3877ee1a;
-  cursor: pointer;
-  opacity: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 0 #3877ee1a;
 
   &_hidden {
-    opacity: 0;
     visibility: hidden;
+    opacity: 0;
   }
 
-  &__icon {
-    &_left {
-      transform: scale(-1, 1);
-    }
+  &_left {
+    transform: scale(-1, 1);
   }
 }

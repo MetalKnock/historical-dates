@@ -1,6 +1,10 @@
+@import '../../app/styles/vars';
+
 .historicalEventList {
   user-select: none;
   padding: 20px;
+  opacity: 0;
+  min-height: 220px;
 
   &__container {
     position: relative;
@@ -11,14 +15,16 @@
     position: absolute;
     top: 50%;
     left: 0;
-    width: 100%;
+    transform: translateY(-50%);
+
     display: flex;
     justify-content: space-between;
-    transform: translateY(-50%);
+
+    width: 100%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $md) {
   .historicalEventList {
     padding: 0;
 
