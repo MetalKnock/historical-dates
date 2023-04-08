@@ -1,17 +1,21 @@
-$widthDesktop: 1920;
-$leftMargin: 320;
-$rightMargin: $leftMargin / 2;
-
+$background: #f4f5f9;
 $black-blue: #42567a;
 $iris: #3877ee;
 $fuchsia: #ef5da8;
 $gradient: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
 $white: white;
-$borderColor: #42567a1a;
+$border-color: #42567a1a;
+$dot-active: #303e5880;
+$sm: 320px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1920px;
+$width-desktop: 1920;
+$left-margin: 320;
+$right-margin: calc($left-margin / 2);
+$circular-slider-dots: 6;
+$circular-slider-width: 530px;
 
 @mixin transition {
-  -webkit-transition: all 0.2s ease-in-out 0s;
-  -moz-transition: all 0.2s ease-in-out 0s;
-  -ms-transition: all 0.2s ease-in-out 0s;
   transition: all 0.2s ease-in-out 0s;
 }

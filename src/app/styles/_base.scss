@@ -4,9 +4,13 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: $background;
+}
+
 .wrapper {
-  margin-left: calc($leftMargin / $widthDesktop * 100%);
-  margin-right: calc($rightMargin / $widthDesktop * 100%);
+  margin-right: calc($right-margin / $width-desktop * 100%);
+  margin-left: calc($left-margin / $width-desktop * 100%);
 }
 
 .container {
@@ -14,14 +18,14 @@
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $md) {
   .wrapper {
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
   }
 
   .container {
-    max-width: 1480px;
+    max-width: calc(1440px + 20px * 2);
     margin: 0 auto;
     padding: 20px;
   }
