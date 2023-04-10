@@ -1,0 +1,39 @@
+@import './vars';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background;
+}
+
+.wrapper {
+  margin-right: calc($right-margin / $width-desktop * 100%);
+  margin-left: calc($left-margin / $width-desktop * 100%);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media (max-width: $xl) {
+  .wrapper {
+    margin-right: calc($right-margin / ($width-desktop * 2.5) * 100%);
+    margin-left: calc($left-margin / ($width-desktop * 2.5) * 100%);
+  }
+}
+
+@media (max-width: $lg) {
+  .wrapper {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .container {
+    max-width: calc(1440px + 20px * 2);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}

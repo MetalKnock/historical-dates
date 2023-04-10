@@ -1,0 +1,36 @@
+@import '../../../app/styles/vars';
+
+.title {
+  max-width: calc(353px + 80px - 5px);
+  margin: 0;
+  padding-left: calc(80px - 5px);
+
+  font-size: $fsz-56;
+  font-weight: 700;
+  line-height: 67px;
+  color: $black-blue;
+
+  border-left: 5px solid;
+  border-image: $gradient;
+  border-image-slice: 1;
+}
+
+@media (max-width: $xl) {
+  .title {
+    max-width: 240px;
+    font-size: $fsz-25;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: $md) {
+  .title {
+    max-width: 123px;
+    padding: 0;
+
+    font-size: $fsz-20;
+    line-height: 24px;
+
+    border: none;
+  }
+}

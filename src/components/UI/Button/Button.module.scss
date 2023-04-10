@@ -1,0 +1,27 @@
+@import '../../../app/styles/vars';
+
+.button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 50px;
+  height: 50px;
+
+  border: 1px solid $black-blue-50;
+  border-radius: 50%;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: $md) {
+  .button {
+    width: 25px;
+    height: 25px;
+  }
+}

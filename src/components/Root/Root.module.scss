@@ -1,0 +1,12 @@
+@import '../../app/styles/vars';
+
+.root {
+  border-right: 1px solid $black-blue-10;
+  border-left: 1px solid $black-blue-10;
+}
+
+@media (max-width: $md) {
+  .root {
+    border: none;
+  }
+}
