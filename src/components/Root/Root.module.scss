@@ -1,11 +1,11 @@
 @import '../../app/styles/vars';
 
 .root {
-  border-left: 1px solid $borderColor;
-  border-right: 1px solid $borderColor;
+  border-right: 1px solid $black-blue-10;
+  border-left: 1px solid $black-blue-10;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $md) {
   .root {
     border: none;
   }

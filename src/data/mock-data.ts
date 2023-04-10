@@ -1,5 +1,7 @@
 import { HistoricalDates } from './config';
 
+const INIT_PERIOD = 0;
+
 const HISTORICAL_DATES: HistoricalDates = [
   {
     id: 0,
@@ -263,4 +265,4 @@ const HISTORICAL_DATES: HistoricalDates = [
   },
 ];
 
-export { HISTORICAL_DATES };
+export { HISTORICAL_DATES, INIT_PERIOD };

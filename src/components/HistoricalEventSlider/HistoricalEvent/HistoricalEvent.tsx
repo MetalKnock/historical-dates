@@ -1,4 +1,4 @@
-import { Fact } from '../../data/config';
+import { Fact } from '../../../data/config';
 import styles from './HistoricalEvent.module.scss';
 
 interface HistoricalEventProps {
@@ -7,6 +7,7 @@ interface HistoricalEventProps {
 
 export default function HistoricalEvent({ fact }: HistoricalEventProps) {
   const { year, description } = fact;
+
   return (
     <li className={styles.historicalEvent}>
       <h3 className={styles.historicalEvent__title}>{year}</h3>

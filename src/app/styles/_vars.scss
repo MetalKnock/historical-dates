@@ -1,21 +1,45 @@
+@function calculate-rem($size) {
+  $rem-size: $size / 16px;
+
+  @return #{$rem-size}rem;
+}
+
 $background: #f4f5f9;
 $black-blue: #42567a;
+$black-blue-10: #42567a1a;
+$black-blue-40: #42567a66;
+$black-blue-50: #42567a80;
+$delimiter-color: #c7cdd9;
 $iris: #3877ee;
 $fuchsia: #ef5da8;
 $gradient: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
 $white: white;
-$border-color: #42567a1a;
 $dot-active: #303e5880;
 $sm: 320px;
 $md: 768px;
 $lg: 1024px;
-$xl: 1920px;
+$xl: 1440px;
+$xll: 1920px;
 $width-desktop: 1920;
 $left-margin: 320;
 $right-margin: calc($left-margin / 2);
 $circular-slider-dots: 6;
 $circular-slider-width: 530px;
+$circular-slider-width-laptop: 300px;
+$fsz-14: calculate-rem(14px);
+$fsz-16: calculate-rem(16px);
+$fsz-20: calculate-rem(20px);
+$fsz-25: calculate-rem(25px);
+$fsz-56: calculate-rem(56px);
+$fsz-120: calculate-rem(120px);
+$fsz-200: calculate-rem(200px);
 
 @mixin transition {
   transition: all 0.2s ease-in-out 0s;
+}
+
+/* stylelint-disable */
+:export {
+  background: $background;
+  blackBlue: $black-blue;
 }

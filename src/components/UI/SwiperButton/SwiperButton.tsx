@@ -1,26 +1,28 @@
 import styles from './SwiperButton.module.scss';
-import arrowIcon from './assets/arrow.svg';
+import { ReactComponent as ArrowIcon } from './assets/arrow.svg';
 
 interface SwiperButtonProps {
-  typeButton: 'left' | 'right';
-  isHidden: boolean;
-  onClick: () => void;
+  isLeft?: boolean;
+  isHidden?: boolean;
+  onClick?: () => void;
 }
 
-export default function SwiperButton({ typeButton, isHidden, onClick }: SwiperButtonProps) {
+export default function SwiperButton({ isLeft, isHidden, onClick }: SwiperButtonProps) {
   return (
     <button
-      className={`${styles.swiperButton} ${isHidden && styles.swiperButton_hidden}`}
+      className={`${styles.swiperButton} ${isHidden && styles.swiperButton_hidden} ${
+        isLeft ? styles.swiperButton_left : ''
+      }`}
       type='button'
       onClick={onClick}
     >
-      <img
-        className={`${styles.swiperButton__icon} ${
-          typeButton === 'left' && styles.swiperButton__icon_left
-        }`}
-        src={arrowIcon}
-        alt='arrow'
-      />
+      <ArrowIcon />
     </button>
   );
 }
+
+SwiperButton.defaultProps = {
+  isLeft: false,
+  isHidden: false,
+  onClick: () => {},
+};
