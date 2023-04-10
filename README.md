@@ -13,7 +13,7 @@ In the project directory, you can run:
 
 ```
 # Runs the app in the development mode
-$ npm start
+$ npm run start
 
 # Builds the app for production
 $ npm run build
