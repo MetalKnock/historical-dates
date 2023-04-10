@@ -3,6 +3,14 @@
 .timePeriod {
   position: relative;
 
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+
+  min-height: calc(560px + 56px);
+
   &::before {
     content: '';
 
@@ -23,9 +31,14 @@
     transform: translate(-50%, -50%);
 
     display: flex;
+    flex-grow: 1;
     gap: 90px;
+    align-items: center;
+    justify-content: center;
 
     padding-right: 30px;
+
+    font-size: 200px;
   }
 
   &__number {
@@ -35,6 +48,59 @@
 
     &_fuchsia {
       color: $fuchsia;
+    }
+  }
+
+  &__controls {
+    position: relative;
+  }
+}
+
+@media (max-width: $xl) {
+  .timePeriod {
+    &__numbers {
+      font-size: 120px;
+    }
+  }
+}
+
+@media (max-width: $md) {
+  .timePeriod {
+    min-height: calc(100vh - 59px);
+    padding-bottom: 12px;
+
+    &::before {
+      display: none;
+    }
+
+    &__numbers {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: none;
+
+      gap: 30px;
+
+      margin-top: 56px;
+      padding: 0;
+
+      font-size: 56px;
+    }
+
+    &__historicalSlider {
+      margin-top: 70px;
+    }
+
+    &__controls {
+      display: flex;
+      margin: 20px 0 0;
+    }
+
+    &__pagination {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }

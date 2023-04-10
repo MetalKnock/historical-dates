@@ -1,0 +1,40 @@
+@import '../../app/styles/vars';
+
+.pagination {
+  &__list {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 6px;
+    height: 6px;
+
+    list-style-type: none;
+
+    border-radius: 50%;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    width: 6px;
+    height: 6px;
+    margin: 0;
+    padding: 0;
+
+    background-color: $black-blue-40;
+    border: none;
+    border-radius: 50%;
+
+    &_active {
+      background-color: $black-blue;
+    }
+  }
+}

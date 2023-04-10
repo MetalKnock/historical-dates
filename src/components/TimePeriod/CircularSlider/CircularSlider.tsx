@@ -19,10 +19,9 @@ export default function CircularSlider() {
 
   useLayoutEffect(() => {
     ctx.current?.add(() => {
-      const tl = gsap.timeline({
-        defaults: { duration: 1, ease: 'Power3 easeInOut' },
-      });
-      tl.to(circleRef.current, {
+      gsap.to(circleRef.current, {
+        duration: 1,
+        ease: 'Power3 easeInOut',
         rotate: (-360 / 6) * currentPeriod,
         transformOrigin: 'center',
       });
@@ -31,11 +30,13 @@ export default function CircularSlider() {
 
   return (
     <div className={styles.circularSlider}>
-      <ul ref={circleRef} className={styles.circularSlider__circle}>
-        {HISTORICAL_DATES.map((date, i) => (
-          <Dot key={date.id} i={i} isActive={currentPeriod === i} category={date.category} />
-        ))}
-      </ul>
+      <div className={styles.circularSlider__container}>
+        <ul ref={circleRef} className={styles.circularSlider__circle}>
+          {HISTORICAL_DATES.map((date, i) => (
+            <Dot key={date.id} i={i} isActive={currentPeriod === i} category={date.category} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

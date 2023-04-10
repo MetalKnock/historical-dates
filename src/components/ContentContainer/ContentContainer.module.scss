@@ -1,0 +1,35 @@
+@import '../../app/styles/vars';
+
+.contentContainer {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+  padding-top: 15.7vh;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 1px;
+    height: 100%;
+
+    background-color: $black-blue-10;
+  }
+}
+
+@media (max-width: $md) {
+  .contentContainer {
+    padding-top: 59px;
+
+    &::before {
+      display: none;
+    }
+  }
+}

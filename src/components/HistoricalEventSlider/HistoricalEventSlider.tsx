@@ -9,11 +9,18 @@ import { BREAKPOINTS, PositionTypes } from './config';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/free-mode';
-import styles from './HistoricalEventList.module.scss';
+import styles from './HistoricalEventSlider.module.scss';
 import useDatesContext from '../../hooks/useDatesContext';
+import useIsMobile from '../../hooks/useIsMobile';
+import { Category } from '../UI/Category';
 
-export default function HistoricalEventList() {
+interface HistoricalEventSliderProps {
+  className?: string;
+}
+
+export default function HistoricalEventSlider({ className }: HistoricalEventSliderProps) {
   const [position, setPosition] = useState<PositionTypes>(PositionTypes.beginning);
+  const { isMobile } = useIsMobile();
 
   const { dates, currentPeriod } = useDatesContext();
 
@@ -21,7 +28,6 @@ export default function HistoricalEventList() {
   const compRef = useRef<HTMLDivElement | null>(null);
 
   const tl = useRef<GSAPTimeline | null>(null);
-  const testRef = useRef<HTMLDivElement | null>(null);
 
   const handleClickLeftButton = () => {
     swiperRef.current?.slidePrev();
@@ -33,6 +39,7 @@ export default function HistoricalEventList() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      if (tl.current) tl.current.progress(0).kill();
       tl.current = gsap
         .timeline()
         .to(compRef.current, { delay: 0.5, duration: 1, opacity: 1 })
@@ -43,14 +50,19 @@ export default function HistoricalEventList() {
   }, []);
 
   useEffect(() => {
-
-    tl.current?.reversed(!tl.current?.reversed());
+    gsap.fromTo(compRef.current, { opacity: 0 }, { opacity: 1, duration: 1 });
   }, [currentPeriod]);
 
   return (
-    <div className={styles.historicalEventList} ref={compRef}>
+    <div className={`${styles.historicalEventSlider} ${className}`} ref={compRef}>
+      {isMobile && dates && (
+        <Category
+          className={styles.historicalEventSlider__category}
+          category={dates[currentPeriod].category}
+        />
+      )}
       {dates && (
-        <div className={styles.historicalEventList__container}>
+        <div className={styles.historicalEventSlider__container}>
           <Swiper
             grabCursor
             freeMode
@@ -76,7 +88,7 @@ export default function HistoricalEventList() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <nav className={styles.historicalEventList__nav} ref={testRef}>
+          <nav className={styles.historicalEventSlider__nav}>
             <SwiperButton
               isLeft
               onClick={handleClickLeftButton}
@@ -87,20 +99,12 @@ export default function HistoricalEventList() {
               isHidden={position === PositionTypes.end}
             />
           </nav>
-          <button
-            type='button'
-            onClick={() => {
-              if (tl.current?.reversed()) {
-                tl.current.play();
-              } else {
-                tl.current?.reverse();
-              }
-            }}
-          >
-            123
-          </button>
         </div>
       )}
     </div>
   );
 }
+
+HistoricalEventSlider.defaultProps = {
+  className: '',
+};

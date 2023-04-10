@@ -26,7 +26,10 @@
   @for $i from 1 through $circular-slider-dots {
     &:nth-child(#{$i}) {
       $angle: calc(360deg / $circular-slider-dots * $i);
-      transform: rotate($angle) translate(calc($circular-slider-width / 2)) rotate(-$angle);
+      transform: rotate($angle)
+        translate(calc($circular-slider-width / 2))
+        rotate(-$angle)
+        rotate(120deg);
     }
   }
 

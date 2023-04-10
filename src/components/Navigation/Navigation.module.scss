@@ -1,16 +1,12 @@
-@import '../../../../app/styles/vars';
+@import '../../app/styles/vars';
 
-.pagination {
+.navigation {
   padding-left: calc(80px - 5px);
 
-  font-size: 14px;
+  font-size: $fsz-14;
   font-weight: 400;
   line-height: 18px;
   color: $black-blue;
-
-  &__span {
-    // opacity: 0;
-  }
 
   &__buttons {
     display: flex;
@@ -27,6 +23,27 @@
 
     &:hover:enabled {
       background-color: $white;
+    }
+  }
+}
+
+@media (max-width: $md) {
+  .navigation {
+    padding-left: 0;
+
+    &__buttons {
+      gap: 10px;
+      margin: 10px 0 0;
+    }
+  }
+
+  .button {
+    &__icon {
+      transform: scale(0.5);
+
+      & path {
+        stroke-width: 4;
+      }
     }
   }
 }

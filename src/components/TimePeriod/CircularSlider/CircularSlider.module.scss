@@ -1,9 +1,16 @@
 @import '../../../app/styles/vars';
 
 .circularSlider {
-  display: flex;
-  justify-content: center;
-  padding: 40px 0;
+  user-select: none;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__container {
+    rotate: -120deg;
+  }
 
   &__circle {
     position: relative;
@@ -19,5 +26,11 @@
 
     border: 1px solid $black-blue-10;
     border-radius: 50%;
+  }
+}
+
+@media (max-width: $md) {
+  .circularSlider {
+    display: none;
   }
 }

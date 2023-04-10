@@ -3,14 +3,14 @@
 .historicalEvent {
   &__title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 25px;
+    font-size: $fsz-25;
     font-weight: 400;
     line-height: 30px;
     color: $iris;
   }
 
   &__description {
-    font-size: 20px;
+    font-size: $fsz-20;
     font-weight: 400;
     line-height: 30px;
     color: $black-blue;
@@ -19,16 +19,24 @@
 
 @media (max-width: $md) {
   .historicalEvent {
+    overflow: hidden;
+    display: -webkit-box;
+
+    max-height: 185px;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+
     &__title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 16px;
+      font-size: $fsz-16;
       font-weight: 400;
       line-height: 19px;
       color: $iris;
     }
 
     &__description {
-      font-size: 14px;
+      font-size: $fsz-14;
       font-weight: 400;
       line-height: 20px;
       color: $black-blue;

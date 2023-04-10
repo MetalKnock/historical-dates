@@ -1,10 +1,10 @@
 @import '../../app/styles/vars';
 
-.historicalEventList {
+.historicalEventSlider {
   user-select: none;
   min-height: 220px;
   padding: 20px;
-  opacity: 0;
+  opacity: 1;
 
   &__container {
     position: relative;
@@ -22,14 +22,35 @@
 
     width: 100%;
   }
+
+  &__category {
+    position: relative;
+    font-size: $fsz-14;
+    line-height: 14px;
+  }
 }
 
 @media (max-width: $md) {
-  .historicalEventList {
+  .historicalEventSlider {
+    margin-top: auto;
     padding: 0;
 
     &__container {
+      margin-top: 10px;
       padding: 0;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 1px;
+
+        background-color: $delimiter-color;
+      }
     }
 
     &__nav {

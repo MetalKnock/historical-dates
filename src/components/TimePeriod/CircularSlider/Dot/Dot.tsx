@@ -1,4 +1,4 @@
-import { useEffect, useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import styles from './Dot.module.scss';
 import variables from '../../../../app/styles/_vars.scss';
@@ -11,65 +11,93 @@ interface DotProps {
 }
 
 export default function Dot({ category, isActive, i }: DotProps) {
-  const { currentPeriod } = useDatesContext();
+  const { currentPeriod, setCurrentPeriod } = useDatesContext();
 
   const dotRef = useRef<HTMLButtonElement | null>(null);
   const spanRef = useRef<HTMLSpanElement | null>(null);
 
   const tl = useRef<GSAPTimeline | null>(null);
+  const ctx = useRef<gsap.Context | null>(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      tl.current = gsap.timeline();
-    }, dotRef);
+    ctx.current = gsap.context(() => {}, dotRef);
 
-    return () => ctx.revert();
+    return () => ctx.current?.revert();
   }, []);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      tl.current
-        ?.add('start')
-        .to(
-          dotRef.current,
-          {
-            duration: 1,
-            ease: 'Power3 easeInOut',
-            rotate: (360 / 6) * currentPeriod,
-          },
-          'start'
-        )
-        .to(
-          dotRef.current,
-          {
-            duration: 0.5,
-            transformOrigin: 'center center',
-            background: variables.background,
-            border: `1px solid ${variables.blackBlue}`,
-            width: '56px',
-            height: '56px',
-            margin: '-28px',
-            fontSize: '20px',
-          },
-          'start'
-        )
-        .to(spanRef.current, { ease: 'none', duration: 0.5, opacity: 1 })
+    const ctx1 = gsap.context(() => {
+      tl.current = gsap
+        .timeline()
+        .to(dotRef.current, {
+          cursor: 'pointer',
+          duration: 0.5,
+          transformOrigin: 'center center',
+          background: variables.background,
+          border: `1px solid ${variables.blackBlue}`,
+          width: '56px',
+          height: '56px',
+          margin: '-28px',
+          fontSize: '20px',
+        })
+        .set(spanRef.current, { display: 'none' }, '<')
         .reverse();
-      if (isActive) {
-        tl.current?.reversed(!tl.current.reversed());
-      }
     }, dotRef);
 
-    return () => ctx.revert();
+    return () => ctx1.revert();
+  }, []);
+
+  useLayoutEffect(() => {
+    ctx.current?.add(() => {
+      gsap.to(dotRef.current, {
+        duration: 1,
+        ease: 'Power3 easeInOut',
+        rotate: (360 / 6) * currentPeriod + 120,
+      });
+      if (isActive) {
+        gsap.to(dotRef.current, {
+          duration: 0.5,
+          transformOrigin: 'center center',
+          background: variables.background,
+          border: `1px solid ${variables.blackBlue}`,
+          width: '56px',
+          height: '56px',
+          margin: '-28px',
+          fontSize: '20px',
+        });
+      } else {
+        gsap.to(dotRef.current, {
+          duration: 0.5,
+          transformOrigin: 'center center',
+          background: variables.blackBlue,
+          border: `1px solid ${variables.blackBlue}`,
+          width: '6px',
+          height: '6px',
+          margin: '-3px',
+          fontSize: '0px',
+        });
+      }
+
+      gsap.to(spanRef.current, { ease: 'none', duration: 0.5, opacity: 1 });
+    });
   }, [currentPeriod, isActive]);
 
-
   const onEnter = () => {
-    tl.current?.reversed(!tl.current?.reversed());
+    if (!isActive) {
+      tl.current?.reversed(!tl.current?.reversed());
+    }
   };
 
   const onLeave = () => {
-    tl.current?.reversed(!tl.current?.reversed());
+    if (!isActive) {
+      tl.current?.reversed(!tl.current?.reversed());
+    }
+  };
+  const onClick = () => {
+    if (!isActive) {
+      setCurrentPeriod(i);
+      tl.current?.reversed(!tl.current?.reversed());
+    }
   };
 
   return (
@@ -79,6 +107,7 @@ export default function Dot({ category, isActive, i }: DotProps) {
       type='button'
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
+      onClick={onClick}
     >
       {i + 1}
       <span className={styles.dot__category} ref={spanRef}>
