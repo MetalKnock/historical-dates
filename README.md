@@ -3,9 +3,7 @@
  
 ## Screenshots
 
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/102481723/230998032-f65d990c-db33-40f5-8775-929ccac2e8ed.gif)
-
-
+![historical-dates](https://user-images.githubusercontent.com/102481723/231605176-6ab8f698-841a-4cbe-95ca-03e569700504.gif)
 
 ## Installing / Getting started
 
