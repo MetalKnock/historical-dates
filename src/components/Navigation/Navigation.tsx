@@ -1,11 +1,11 @@
-import useDatesContext from '../../hooks/useDatesContext';
 import { formatIntoTwoDigitsString } from '../../shared/utils/common';
 import { Button } from '../UI/Button';
 import { ReactComponent as ArrowIcon } from './assets/arrow.svg';
+import useDatesContext from '../../hooks/useDatesContext';
 import styles from './Navigation.module.scss';
 
 export default function Navigation() {
-  const { currentPeriod, dates, increasePeriod, decreasePeriod } = useDatesContext();
+  const { currentPeriod, dates, swiper } = useDatesContext();
 
   return (
     <div className={styles.navigation}>
@@ -19,14 +19,14 @@ export default function Navigation() {
         <Button
           className={styles.navigation__button}
           disabled={!dates || currentPeriod === 0}
-          onClick={increasePeriod}
+          onClick={() => swiper?.slidePrev()}
         >
           <ArrowIcon className={styles.button__icon} />
         </Button>
         <Button
           className={`${styles.navigation__button} ${styles.navigation__button_right}`}
           disabled={!dates || currentPeriod === dates.length - 1}
-          onClick={decreasePeriod}
+          onClick={() => swiper?.slideNext()}
         >
           <ArrowIcon className={styles.button__icon} />
         </Button>

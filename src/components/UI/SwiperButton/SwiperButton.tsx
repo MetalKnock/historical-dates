@@ -1,5 +1,5 @@
-import styles from './SwiperButton.module.scss';
 import { ReactComponent as ArrowIcon } from './assets/arrow.svg';
+import styles from './SwiperButton.module.scss';
 
 interface SwiperButtonProps {
   isLeft?: boolean;

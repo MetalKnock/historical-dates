@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import styles from './AnimatedNumber.module.scss';
+import { numberAnimation } from './animations';
 
 interface AnimateNumberProps {
   number: number;
@@ -11,17 +11,20 @@ export default function AnimatedNumber({ number, className }: AnimateNumberProps
   const [initValue] = useState(number);
 
   const numberRef = useRef<HTMLDivElement | null>(null);
+  const ctx = useRef<gsap.Context | null>(null);
 
   useLayoutEffect(() => {
-    gsap.to(numberRef.current, {
-      duration: 1,
-      innerHTML: number,
-      roundProps: 'innerHTML',
-    });
+    ctx.current = gsap.context(() => {});
+
+    return () => ctx.current?.revert();
+  }, []);
+
+  useLayoutEffect(() => {
+    numberAnimation({ ctx, ref: numberRef, number });
   }, [number]);
 
   return (
-    <div className={`${styles.animatedNumber} ${className}`} ref={numberRef}>
+    <div className={className} ref={numberRef}>
       {initValue}
     </div>
   );

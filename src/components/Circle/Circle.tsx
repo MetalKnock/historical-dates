@@ -1,9 +1,10 @@
 import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { HISTORICAL_DATES } from '../../../data/mock-data';
+import { Dot } from '../Dot';
+import { HISTORICAL_DATES } from '../../data/mock-data';
+import { counterclockwiseRotationAnimation } from './animations';
+import useDatesContext from '../../hooks/useDatesContext';
 import styles from './CircularSlider.module.scss';
-import { Dot } from './Dot';
-import useDatesContext from '../../../hooks/useDatesContext';
 
 export default function CircularSlider() {
   const { currentPeriod } = useDatesContext();
@@ -18,20 +19,13 @@ export default function CircularSlider() {
   }, []);
 
   useLayoutEffect(() => {
-    ctx.current?.add(() => {
-      gsap.to(circleRef.current, {
-        duration: 1,
-        ease: 'Power3 easeInOut',
-        rotate: (-360 / 6) * currentPeriod,
-        transformOrigin: 'center',
-      });
-    });
+    counterclockwiseRotationAnimation({ ctx, ref: circleRef, currentPeriod });
   }, [currentPeriod]);
 
   return (
-    <div className={styles.circularSlider}>
-      <div className={styles.circularSlider__container}>
-        <ul ref={circleRef} className={styles.circularSlider__circle}>
+    <div className={styles.circle}>
+      <div className={styles.circle__container}>
+        <ul ref={circleRef} className={styles.circle__circle}>
           {HISTORICAL_DATES.map((date, i) => (
             <Dot key={date.id} i={i} isActive={currentPeriod === i} category={date.category} />
           ))}

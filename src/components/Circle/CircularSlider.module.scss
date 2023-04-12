@@ -1,6 +1,6 @@
-@import '../../../app/styles/vars';
+@import '../../app/styles/vars';
 
-.circularSlider {
+.circle {
   user-select: none;
 
   position: absolute;
@@ -31,7 +31,7 @@
 }
 
 @media (max-width: $md) {
-  .circularSlider {
+  .circle {
     display: none;
   }
 }
