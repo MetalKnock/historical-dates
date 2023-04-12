@@ -1,12 +1,12 @@
-import styles from './Pagination.module.scss';
 import useDatesContext from '../../hooks/useDatesContext';
+import styles from './Pagination.module.scss';
 
 interface PaginationProps {
   className?: string;
 }
 
 export default function Pagination({ className }: PaginationProps) {
-  const { dates, currentPeriod, setCurrentPeriod } = useDatesContext();
+  const { dates, currentPeriod, swiper } = useDatesContext();
 
   return (
     <ul className={`${styles.pagination__list} ${className}`}>
@@ -17,7 +17,7 @@ export default function Pagination({ className }: PaginationProps) {
               currentPeriod === i ? styles.pagination__button_active : ''
             }`}
             type='button'
-            onClick={() => setCurrentPeriod(i)}
+            onClick={() => swiper?.slideTo(i)}
           >
             {}
           </button>

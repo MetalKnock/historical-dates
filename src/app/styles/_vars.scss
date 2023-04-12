@@ -1,5 +1,5 @@
 @function calculate-rem($size) {
-  $rem-size: $size / 16px;
+  $rem-size: calc($size / 16px);
 
   @return #{$rem-size}rem;
 }
@@ -15,6 +15,7 @@ $fuchsia: #ef5da8;
 $gradient: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
 $white: white;
 $dot-active: #303e5880;
+$swiper-button-color: #3877ee1a;
 $sm: 320px;
 $md: 768px;
 $lg: 1024px;
@@ -25,7 +26,6 @@ $left-margin: 320;
 $right-margin: calc($left-margin / 2);
 $circular-slider-dots: 6;
 $circular-slider-width: 530px;
-$circular-slider-width-laptop: 300px;
 $fsz-14: calculate-rem(14px);
 $fsz-16: calculate-rem(16px);
 $fsz-20: calculate-rem(20px);
